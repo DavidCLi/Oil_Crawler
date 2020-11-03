@@ -9,6 +9,7 @@ Created on Sun Nov  1 14:13:27 2020
 from urllib.error import HTTPError
 from bs4 import BeautifulSoup
 import requests
+import pymysql
 
 def getData(url):
     try:
@@ -33,7 +34,7 @@ def getData(url):
                 len(c[3].text.replace("\n", "")) > 0 and 
                 len(c[4].text.replace("\n", "")) > 0 ):
                 dataList = []
-                dataList.append(c[0].text.replace("\n", ""))
+                dataList.append(c[0].text.replace("\n", "").split()[0])
                 dataList.append(c[1].text.replace("\n", ""))
                 dataList.append(c[2].text.replace("\n", ""))
                 dataList.append(c[3].text.replace("\n", ""))
@@ -47,5 +48,18 @@ def getData(url):
     
     return myList
 
+# Get Data from source 
 mList = getData('https://vipmember.tmtd.cpc.com.tw/mbwebs/ShowHistoryPrice_oil2019.aspx')
-print(mList);
+# print(mList);
+#Database connection
+conn = pymysql.Connect("localhost", "root", "1qaz@WSX", "HistoryGasPrice")
+cursor = conn.cursor()
+
+for data in mList:
+    sql = "insert into HistoryGasPrice values('{}', {}, {}, {}, {});".format(data[0], data[1], data[2], data[3], data[4])
+    cursor.execute(sql);
+    conn.commit()
+
+conn.close()    
+print('ok')
+
