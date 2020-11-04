@@ -9,7 +9,7 @@ Created on Tue Nov  3 14:29:46 2020
 import pymysql
 import matplotlib.pyplot as plt
 
-db = pymysql.Connect("localhost", "root", "1qaz@WSX", "HistoryGasPrice")
+db = pymysql.Connect("localhost", "root", "xxxxxx", "HistoryGasPrice")
 cursor = db.cursor()
 sql    = "select * from HistoryGasPrice"
 
