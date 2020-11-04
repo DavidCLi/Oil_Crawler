@@ -52,7 +52,7 @@ def getData(url):
 mList = getData('https://vipmember.tmtd.cpc.com.tw/mbwebs/ShowHistoryPrice_oil2019.aspx')
 # print(mList);
 #Database connection
-conn = pymysql.Connect("localhost", "root", "1qaz@WSX", "HistoryGasPrice")
+conn = pymysql.Connect("localhost", "root", "xxxxxx", "HistoryGasPrice")
 cursor = conn.cursor()
 
 for data in mList:
