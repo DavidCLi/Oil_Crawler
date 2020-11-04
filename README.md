@@ -2,7 +2,7 @@
 Crawler to get the oil price from Taiwan CPC
 
 ### Output
-![image](https://github.com/DavidCLi/Oil_Crawler/blob/main/pics/Plot1.PNG) 
+![image](https://github.com/DavidCLi/Oil_Crawler/blob/main/pics/Plot1.png) 
 
 ### Oil_Crawler.py
     1. Get data from Taiwan CPC
